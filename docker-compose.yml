@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  apache-1c:
+    build: .
+    restart: always
+    ports:
+      - 8007:80
+    extra_hosts:
+      - "serverl:192.168.4.5"
