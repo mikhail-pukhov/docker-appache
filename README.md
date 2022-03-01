@@ -14,7 +14,7 @@ https://infostart.ru/1c/articles/810851/
 Создадим файл с настройками подключения к 1С: default.vrd
 
 Я привожу пример минимального vrd файла в котором по умолчанию опубликованы все веб-сервисы, все http сервисы и стандартный REST интерфейс (OData).
-
+~~~
 <?xml version="1.0" encoding="UTF-8"?>
 <point xmlns="http://v8.1c.ru/8.2/virtual-resource-system"
       xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -25,6 +25,8 @@ https://infostart.ru/1c/articles/810851/
    <ws publishExtensionsByDefault="true" />
    <httpServices publishByDefault="true" publishExtensionsByDefault="true"/>
 </point>
+~~~
+
 Обратите внимание на строку подключения, замените имя сервера 1С (Serv1C) и имя информационной базы (BuhBase) на свои.
 
 Если вы ранее уже публиковали свою базу на веб-сервере (не важно на каком: IIS или Apache, Windows или Linux, с помощью конфигуратор
