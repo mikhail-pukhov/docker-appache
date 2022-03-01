@@ -17,13 +17,16 @@ https://infostart.ru/1c/articles/810851/
 ~~~
 <?xml version="1.0" encoding="UTF-8"?>
 <point xmlns="http://v8.1c.ru/8.2/virtual-resource-system"
-      xmlns:xs="http://www.w3.org/2001/XMLSchema"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      base="/BuhBase"
-      ib="Srvr=Serv1C;Ref=BuhBase"
-      enableStandardOData="true">
-   <ws publishExtensionsByDefault="true" />
-   <httpServices publishByDefault="true" publishExtensionsByDefault="true"/>
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		base="/ut114"
+		ib="Srvr=serverl;Ref=ut114;">
+	<standardOdata enable="false"
+			reuseSessions="autouse"
+			sessionMaxAge="20"
+			poolSize="10"
+			poolTimeout="5"/>
+	<analytics enable="true"/>
 </point>
 ~~~
 
@@ -33,16 +36,16 @@ https://infostart.ru/1c/articles/810851/
 ## Шаг 4.
 Возьмём стандартный конфиг от Apache (httpd.conf) и добавим к нему несколько строк в конец (полный пример: https://github.com/pqr/docker-apache-1c-example/blob/master/httpd.conf)
 
-LoadModule _1cws_module /opt/1cv8/x86_64/8.3.19.1229/wsap24.so
+LoadModule _1cws_module /opt/1cv8/i386/8.3.18.1741/wsap24.so
 ~~~
 # 1c publication
-Alias "/BuhBase" "/usr/local/apache2/htdocs/BuhBase/"
-<Directory "/usr/local/apache2/htdocs/BuhBase/">
+Alias "/BuhBase" "/usr/local/apache2/htdocs/ut114/"
+<Directory "/usr/local/apache2/htdocs/ut114/">
     AllowOverride All
     Options None
     Require all granted
     SetHandler 1c-application
-    ManagedApplicationDescriptor "/usr/local/apache2/htdocs/BuhBase/default.vrd"
+    ManagedApplicationDescriptor "/usr/local/apache2/htdocs/ut114/default.vrd"
 </Directory>
 ~~~
 
